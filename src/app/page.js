@@ -12,6 +12,7 @@ import {
   FooterLinkGroup,
   Carousel,
   Button,
+  Card
 
 } from "flowbite-react";
 
