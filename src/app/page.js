@@ -1,4 +1,7 @@
-import Image from "next/image";
+/* 
+ * @author Kevin Shie <a83850066@gmail.com>
+*/
+
 import Link from "next/link";
 import { 
   Navbar,
@@ -18,6 +21,25 @@ import {
 from "flowbite-react";
 
 export default function Home() {
+  
+  const items= [
+    {
+      cover:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Beigang_Wude_Temple_20160327.jpg/1280px-Beigang_Wude_Temple_20160327.jpg",
+      name:"北港",
+      description:"北港鎮（臺灣話：Pak-káng tìn），舊稱「笨港」，位於臺灣雲林縣西南方，東接元長鄉，北連四湖鄉，西毗水林鄉，東南隔北港溪與嘉義縣六腳鄉、新港鄉相鄰，是臺灣媽祖信仰中心，也是雲林三大區域中心之一，雲林海線的門戶及政經中心，交通、信仰、觀光、文化、醫療、教育重要的鄉鎮之一。因地理位置及歷史文化背景等因素，生活與嘉義都會區及嘉義縣海線重鎮朴子市關係密切，互通往來之交通量相當龐大，也因而帶動北港至嘉義市及朴子市間三角地帶的發展。",
+    },
+    {
+      cover:"",
+      name:"",
+      description:"",
+    },
+    {
+      cover:"",
+      name:"",
+      description:"",
+    },
+  ]; 
+
         return (
         <>
         <div className="bg-cyan-800">
@@ -49,8 +71,8 @@ export default function Home() {
           <div className="h-56 sm:h-64 xl:h-80 2xl:h-96">
 
           <Carousel>
-            <img src="https://flowbite.com/docs/images/carousel/carousel-1.svg" alt="..." />
-            <img src="https://flowbite.com/docs/images/carousel/carousel-2.svg" alt="..." />
+            <img src="./banner/1440px-Beigang02.jpg" alt="由 Solomon203 - 自己的作品, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=47818945" />
+            <img src="./banner/Bridge.jpg" alt="由 Mk2010 - 自己的作品, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=24259880" />
             <img src="https://flowbite.com/docs/images/carousel/carousel-3.svg" alt="..." />
             <img src="https://flowbite.com/docs/images/carousel/carousel-4.svg" alt="..." />
             <img src="https://flowbite.com/docs/images/carousel/carousel-5.svg" alt="..." />
@@ -71,14 +93,21 @@ export default function Home() {
             </div>
           </div>
 
-          <Card className="max-w-sm">
+          <div className="bg-white py-16">
+            <div className="container mx-auto grid grid-cols-4 gap-4">
+          {items.map(item =>
+          <Card
+            className="max-w-sm"
+            imgAlt={item.name}
+            imgSrc={item.cover}
+          >
             <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-              Noteworthy technology acquisitions 2021
+              北港
             </h5>
             <p className="font-normal text-gray-700 dark:text-gray-400">
-              Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
+              321
             </p>
-            
+          
           <Button>
             Read more
             <svg className="-mr-1 ml-2 h-4 w-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -90,7 +119,9 @@ export default function Home() {
             </svg>
           </Button>
           </Card>
-          
+          )}
+            </div>
+          </div>
 
         </>    
   );
