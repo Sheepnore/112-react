@@ -2,6 +2,9 @@
  * @author Kevin Shie <a83850066@gmail.com>
 */
 
+'use client';
+
+import {useState,useEffect} from `react`;
 import Link from "next/link";
 import { 
   Navbar,
@@ -23,8 +26,33 @@ import CustomCard from "./components/Card.jsx"
 
 export default function Home() {
 
+  const [items,setItems] = useState([]);
 
-  const items= [
+  useEffect(() => {
+   const apiURL = 'https://tdx.transportdata.tw/api/basic/v2/Tourism/ScenicSpot'
+   const tokenURl = 'http://tdx.transportdata.tw/auth/realms/TDXConnect/protocol/openid-connect/token';
+   const getToken = async () =>{     // async vs sync 非同步 vs 同步   非同步
+    const ClientId = process.env.TDX_CLIENT_ID;
+    const ClientSecret = process.env.TDX_CLIENT_SECRET;
+
+    const tokenParamps = new URLSearchParams();
+    tokenParamps.append('grant_type','client_creditials');
+    tokenParamps.append('client_id',ClientId);
+    tokenParamps.append('client_secret',ClientSecret);
+
+    const tokenResponse = await fetch('http://tdx.transportdata.tw/auth/realms/TDXConnect/protocol/openid-connect/token',{
+      method: 'POST',
+      headers:{
+        'content-type':'application/x-www-form-urlencoded'
+      },
+      body:tokenParamps.toString(),
+    }) //fetch(url,method,headers)
+
+  };
+  },[]);
+
+
+ /* const items= [
     {
       "ScenicSpotID": "C1_376490000A_000001",
       "ScenicSpotName": "雲林布袋戲館",
@@ -846,7 +874,7 @@ export default function Home() {
       "SrcUpdateTime": "2024-05-31T01:34:33+08:00",
       "UpdateTime": "2024-05-31T03:14:56+08:00"
     }
-  ]; 
+  ]; */
 
         return (
         <>
