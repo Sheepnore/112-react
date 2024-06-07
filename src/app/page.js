@@ -28,7 +28,7 @@ export default function Home() {
 
   const [items,setItems] = useState([]);
 
-  useEffect(() => {
+  useEffect(() => {   
    const apiURL = 'https://tdx.transportdata.tw/api/basic/v2/Tourism/ScenicSpot'
    const tokenURl = 'http://tdx.transportdata.tw/auth/realms/TDXConnect/protocol/openid-connect/token';
    const getToken = async () =>{     // async vs sync 非同步 vs 同步   非同步
