@@ -1,4 +1,4 @@
-/* 
+/** 
  * @author Kevin Shie <a83850066@gmail.com>
 */
 
@@ -6,6 +6,7 @@
 
 import {useState,useEffect} from 'react';
 import Link from "next/link";
+import Image from "next/image";
 import { 
   Navbar,
   NavbarBrand, 
@@ -28,18 +29,19 @@ export default function Home() {
 
   const [items,setItems] = useState([]);
 
-  useEffect(() => {   
-   async function fetchData(){
-    const response = await fetch('api/items');
-    const data = await response.json();
-    console.log(data);
-    setItems(data);
-   }
-   fetchData();
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch('api/items');
+      const data = await response.json();
+      console.log(data);
+      setItems(data);
+    }
+    fetchData();
+  }, []);
 
-  },[]);
 
-return (
+
+      return (
         <>
         <div className="bg-cyan-800">
           <div className="container mx-auto">  
@@ -92,23 +94,12 @@ return (
             </div>
           </div>
 
-          <div className="bg-white py-16">
-            <div className="container mx-auto grid grid-cols-4 gap-4">
-          {items.map(item =>
-          <CustomCard item = {item}/>
-          )}
+          <div className="container mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
 
-          <Button>
-            Read more
-            <svg className="-mr-1 ml-2 h-4 w-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-              <path
-                fillRule="evenodd"
-                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                clipRule="evenodd"
-              />
-            </svg>
-          </Button>
-
+            {items.map((item,index)=>
+              <CustomCard item ={item} key={index}/>
+            )}
             </div>
           </div>
 
